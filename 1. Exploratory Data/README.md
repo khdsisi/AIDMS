@@ -1,10 +1,5 @@
 # AI, Decision-Making and Society Problem Set #1
 
-
-
-
-
-
 ## Overview
 
 The goal of this homework is to provide some hands-on experience of exploratory data analysis and data curation. We will work step-by-step through investigating a dataset, training some ML models, and evaluating the models. We will apply a minimal version of the Grounded Theory approach to define custom categories and consider the effects of different design decisions on model performance. Overall, the homework is divided into 5 parts:
@@ -27,16 +22,16 @@ In this section, we will set up our environment for the rest of the assignment. 
 *   Download a dataset to use for the assignment
 *   Implement code to train a classifier
 
-### Setting up your coding environment
+## Setting up your coding environment
 
 First, we will set up the python environment to interact with libraries for model training and data manipulation.
 Moreover, make sure to enable the GPU on the notebook by navigating to the 'runtime' tab, then clicking on 'change runtime type' and then selecting one of the available GPUs
 
-## Install the generative AI interface
+    # Install the generative AI interface
 !pip install -U -q google-generativeai
 !pip install transformers
 
-## Imports in order to call relevant libraries
+    # Imports in order to call relevant libraries
 import re
 import tqdm
 import keras
@@ -116,11 +111,11 @@ test_df.head()
 In this section we will take the feedback review and will generate the embeddings, from which we will try to predict the performance/potential score for each employee.
 The generation of the embedding is done similarly to the next text classification [example](https://colab.research.google.com/github/google-gemini/cookbook/blob/main/examples/Classify_text_with_embeddings.ipynb#scrollTo=_mwJYXpElYJc).
 
-### Creating the embeddings
+    # Creating the embeddings
 
 Create the embeddings using the embedding-001 model, similarly to the provided classification example. Make sure that your colab notebook is enabled with the GPU configuration.
 
-###### Remark: the embedding generation might take a while, so be patient.
+    # Remark: the embedding generation might take a while, so be patient.
 
 from tqdm.auto import tqdm
 tqdm.pandas()
@@ -163,10 +158,10 @@ def build_classification_model(input_size: int, num_classes: int) -> keras.Model
   x = layers.Dense(num_classes, activation='sigmoid')(x)
   return keras.Model(inputs=[inputs], outputs=x)
 
-# Derive the embedding size from the first training element.
+    # Derive the embedding size from the first training element.
 embedding_size = len(df_train['Embeddings'].iloc[0])
 
-# Give your model a different name, as you have already used the variable name 'model'
+    # Give your model a different name, as you have already used the variable name 'model'
 classifier = build_classification_model(embedding_size, len(df_train['label'].unique()))
 classifier.summary()
 
@@ -193,13 +188,13 @@ Furthermore, feel free to try several different values of NUM_EPOCHS and BATCH_S
 NUM_EPOCHS = 40
 BATCH_SIZE = 8
 
-# Configure the training data to fit the classifier.
+    # Configure the training data to fit the classifier.
 y_train = df_train['label']
 x_train = np.stack(df_train['Embeddings'])
 y_val   = df_test['label']
 x_val   = np.stack(df_test['Embeddings'])
 
-# Train the model for the desired number of epochs.
+    # Train the model for the desired number of epochs.
 history = classifier.fit(x=x_train,
                          y=y_train,
                          validation_data=(x_val, y_val),
@@ -247,7 +242,7 @@ def plot_history(history):
   fig, (ax1, ax2) = plt.subplots(1,2)
   fig.set_size_inches(20, 8)
 
-  # Plot loss
+    # Plot loss
   ax1.set_title('Loss')
   ax1.plot(history.history['loss'], label = 'train')
   ax1.plot(history.history['val_loss'], label = 'test')
@@ -256,7 +251,7 @@ def plot_history(history):
   ax1.set_xlabel('Epoch')
   ax1.legend(['Train', 'Validation'])
 
-  # Plot accuracy
+    # Plot accuracy
   ax2.set_title('Accuracy')
   ax2.plot(history.history['accuracy'],  label = 'train')
   ax2.plot(history.history['val_accuracy'], label = 'test')
@@ -301,16 +296,16 @@ What does the confusion matrix reveal about the model's performance? Are there a
 
 After looking at the quantitative evaluation of the model, now we will look at qualitative analysis. This will involve exploring the data and identifying some custom categories and labels. To start, let's add a new column to the dataset with the predicted labels.
 
-# Stack the embeddings to create x_train and x_test
+    # Stack the embeddings to create x_train and x_test
 x_train = np.stack(df_train['Embeddings'].values)
 x_test = np.stack(df_test['Embeddings'].values)
 
-# Predict on the training data
+    # Predict on the training data
 y_hat_train = classifier.predict(x_train)
 y_hat_train = np.argmax(y_hat_train, axis=1)
 df_train['predicted_label'] = y_hat_train
 
-# Predict on the test data
+    # Predict on the test data
 y_hat_test = classifier.predict(x_test)
 y_hat_test = np.argmax(y_hat_test, axis=1)
 df_test['predicted_label'] = y_hat_test
@@ -322,7 +317,7 @@ In multiple cases (and also in our dataset), some of the annotated labels might 
 
 You can label as many as you want, but you should label at least 30 examples.
 
-# Function to manually label each example
+    # Function to manually label each example
 pd.set_option('display.max_colwidth', None)
 
 def manual_labeling(row):
@@ -344,7 +339,7 @@ def manual_labeling(row):
     else:  # If the user provides a new label, return the updated label (subtract 1 for 0 indexing)
         return int(correct_label) - 1
 
-# Function to calculate confidence interval width based on new labels
+    # Function to calculate confidence interval width based on new labels
 def build_CI(y_hat, y_true):
     # Calculate accuracy
     cor_predictions = np.sum(y_hat == y_true)
@@ -356,14 +351,14 @@ def build_CI(y_hat, y_true):
     # Return one-sided width of confidence interval
     return z_value * standard_error
 
-# Initialize manual_label columns to -1 (indicating not labeled yet)
+    # Initialize manual_label columns to -1 (indicating not labeled yet)
 df_train['manual_label'] = -1
 df_test['manual_label'] = -1
 
-# Number of examples to inspect manually
+    # Number of examples to inspect manually
 examples_to_inspect = 30
 
-# Loop through the dataset and manually update labels
+    # Loop through the dataset and manually update labels
 for i in range(len(df_train)):
 
     # Apply manual labeling for df_train
@@ -392,7 +387,7 @@ for i in range(len(df_train)):
     if i >= examples_to_inspect:
         break
 
-# Display the updated DataFrame
+    # Display the updated DataFrame
 print("\nUpdated DataFrame with manual labels:")
 print(df_train.head())
 
@@ -424,7 +419,7 @@ Now, we'll go one step further and invent some new categories for the data. The 
 
 First, modify the code below to collect annotations of the data and store them in the dataframe.
 
-# Add new columns to hold the annotations. Initialize with an empty string
+    # Add new columns to hold the annotations. Initialize with an empty string
 df_train['annotation'] = ''
 df_test['annotation'] = ''
 
@@ -443,8 +438,8 @@ def annotate(row):
     # Return the annotation provided by the user
     return annotation
 
-# Apply the function to your dataset
-# Apply the manual annotation function to each row and store the results
+    # Apply the function to your dataset
+    # Apply the manual annotation function to each row and store the results
 examples_to_inspect = 4  # Define how many examples you want to annotate
 
 for i in range(len(df_train)):
@@ -463,7 +458,7 @@ for i in range(len(df_train)):
         print('=======================================================')
         print(f"=========Current i is {i}=========")
 
-# Display the collected Annotations
+#### Display the collected Annotations
 for _, row in df_train.iterrows():
     if row['annotation'] != '':
         print(f"Feedback is: {row['feedback']}")
@@ -485,7 +480,7 @@ For each category please:
 3.   Provide an example of each label.
 4.   Describe why the categorization might be useful.
 
-# Define your custom categories and their summaries
+    # Define your custom categories and their summaries
 custom_categories = {
     'Work Ethic and Discipline': (('Disciplined', 'Not Disciplined'),
                                   "This category assesses whether employees follow company norms related to punctuality, reliability, and work ethic."),
@@ -494,7 +489,7 @@ custom_categories = {
                                   "This category captures the distinction between employees who have untapped potential versus those who are underperforming without much potential for growth.")
 }
 
-# Create a dictionary that maps (Category, Label) -> Example
+    # Create a dictionary that maps (Category, Label) -> Example
 example_dict = {
     ('Work Ethic and Discipline', 'Disciplined'): "Always on time and completes tasks promptly.",
     ('Work Ethic and Discipline', 'Not Disciplined'): "Takes many breaks, arrives late, and leaves early.",
@@ -502,7 +497,7 @@ example_dict = {
     ('Potential vs. Performance', 'Low Potential, Low Performance'): "Shows no promise and consistently fails to meet standards."
 }
 
-# Display the categories and examples
+    # Display the categories and examples
 for category in custom_categories:
     print(f"Category is: {category}; {custom_categories[category][1]}")
     print(f"Labels are: {list(enumerate(custom_categories[category][0]))}")
@@ -518,12 +513,12 @@ for category in custom_categories:
 
 Now we can add a new column to the dataset for each category. We will use -1 to denote unlabeled entries and the order of the labels in the dictionaries above to map numbers to labels.
 
-# Add new columns for each category with an initial value of -1
+    # Add new columns for each category with an initial value of -1
 for category in custom_categories:
     df_train[category] = -1
     df_test[category] = -1
 
-# Function to label each row based on user input
+    # Function to label each row based on user input
 def custom_label(row, category, labels, summary):
     """
     This function prompts the user to assign a label to each row for the given category.
@@ -539,7 +534,7 @@ def custom_label(row, category, labels, summary):
     # Return the index of the chosen label
     return int(label)
 
-# Function to label each category for a specific number of examples
+    # Function to label each category for a specific number of examples
 def label_category(category, labels):
     """
     This function iterates through the training and test datasets, prompting the user to assign a label
@@ -575,7 +570,7 @@ def label_category(category, labels):
             print('=======================================================')
             print(f"========= Current i is {i} =========")
 
-# Label each category in the custom categories
+    # Label each category in the custom categories
 for category in custom_categories:
     print('=======================================================')
     label_category(category, labels=custom_categories[category][0])
@@ -654,10 +649,10 @@ from transformers import pipeline
 import torch
 device = 0 if torch.cuda.is_available() else -1
 
-# To accomplish that task, we will use the Bart model
+    # To accomplish that task, we will use the Bart model
 classifier = pipeline("zero-shot-classification", model="valhalla/distilbart-mnli-12-1", device = device)
 
-# Function to classify feedback based on prompt
+    # Function to classify feedback based on prompt
 def classify_feedback(feedback, prompt, labels):
     # Combine prompt with feedback
     combined_input = prompt.format(feedback)
@@ -668,8 +663,7 @@ def classify_feedback(feedback, prompt, labels):
     # Return the label with the highest score
     return classification_result['labels'][0]
 
-# Apply summarization prompt
-# Apply the prompts to each feedback and store the generated results
+    # Apply the prompts to each feedback and store the generated results
 number_to_classify = 5
 df_train['category_0_prompt_0'] = df_train.head(number_to_classify)['feedback'].apply(lambda feedback: classify_feedback(feedback, prompts[list(custom_categories.keys())[0]][0], custom_categories[list(custom_categories.keys())[0]][0]))
 df_train['category_0_prompt_1'] = df_train.head(number_to_classify)['feedback'].apply(lambda feedback: classify_feedback(feedback, prompts[list(custom_categories.keys())[0]][1], custom_categories[list(custom_categories.keys())[0]][0]))
@@ -679,7 +673,7 @@ df_train['category_1_prompt_0'] = df_train.head(number_to_classify)['feedback'].
 df_train['category_1_prompt_1'] = df_train.head(number_to_classify)['feedback'].apply(lambda feedback: classify_feedback(feedback, prompts[list(custom_categories.keys())[1]][1], custom_categories[list(custom_categories.keys())[1]][0]))
 df_train['category_1_prompt_2'] = df_train.head(number_to_classify)['feedback'].apply(lambda feedback: classify_feedback(feedback, prompts[list(custom_categories.keys())[1]][2], custom_categories[list(custom_categories.keys())[1]][0]))
 
-# print the results
+    # print the results
 print(df_train[['feedback', list(custom_categories.keys())[0], 'category_0_prompt_0']].head(number_to_classify))
 print(df_train[['feedback', list(custom_categories.keys())[0], 'category_0_prompt_1']].head(number_to_classify))
 print(df_train[['feedback', list(custom_categories.keys())[0], 'category_0_prompt_2']].head(number_to_classify))
@@ -694,7 +688,7 @@ We now aim to perform few-shot prompting, where we use our zero-shot classifier 
 
 Given the previous prompts and the model's predictions, check the response of the model on some new unseen prompts and labels. You can use the previous prompts and labels to generate the new prompts and labels, thus "guiding" the model towards the right answer by giving him the previously generated information.
 
-# Function to classify feedback without few-shot examples for debugging purposes
+    # Function to classify feedback without few-shot examples for debugging purposes
 def classify_feedback_simple(feedback, prompt, labels):
     # Combine the prompt with the feedback (no few-shot examples for now)
     combined_input = prompt.format(feedback)
@@ -716,10 +710,10 @@ def classify_feedback_simple(feedback, prompt, labels):
         print("\n[DEBUG] No valid labels found. Returning 'Unknown'.\n")
         return 'Unknown'
 
-# Test the simpler process with just the feedback and prompt (no few-shot examples)
+    # Test the simpler process with just the feedback and prompt (no few-shot examples)
 number_to_classify = 5
 
-# Iterate over the feedback and apply zero-shot classification (no few-shot prompting)
+    # Iterate over the feedback and apply zero-shot classification (no few-shot prompting)
 for i in range(number_to_classify):
     # Classify the feedback using simplified process for Category 0
     new_label_0 = classify_feedback_simple(
@@ -739,7 +733,7 @@ for i in range(number_to_classify):
     df_train.at[i, 'category_0_simple'] = new_label_0
     df_train.at[i, 'category_1_simple'] = new_label_1
 
-# Present the results in a more organized format
+    # Present the results in a more organized format
 print("\nSimplified Classification Results\n")
 print("=" * 40)
 
