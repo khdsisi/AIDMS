@@ -6,13 +6,11 @@
     
 In the realm of artificial intelligence (AI), evaluations play a crucial role in assessing the performance, fairness, and potential risks associated with AI models and systems. As AI technologies become increasingly integrated into various sectors, from transportation security to human resource management, ensuring their reliability and impartiality is paramount. This project delves into the methodologies for designing AI evaluations, with a specific focus on gender bias in large language models (LLMs). Additionally, it explores real-world AI evaluation mechanisms, highlighting their applications and limitations. Through a combination of custom-designed evaluations and an analysis of established auditing practices, this project aims to contribute to the development of more equitable and accountable AI systems.
 
-This project has 3 parts
+This project has 2 parts
 
 **1: Designing My Own Evaluation**
 
-**2: Testing Large Language Models**
-
-**3: Red-teaming for Cross-lingual Discrepancies**
+**2: Real-world AI evaluationss**
 
 ---
     
@@ -192,26 +190,18 @@ Ultimately, the project reinforced the importance of diversity and inclusivity i
     
 ## Project Links
     
-- **GitHub Repository:** [AI-Evaluations-Project](https://github.com/yourusername/AI-Evaluations-Project)
 - **Colab Notebook:** [AI Evaluations Notebook](https://colab.research.google.com/drive/1dMFF4m75QJvoybdaBJx8wlKfsoWVpY49?usp=sharing)
 - **Chat Transcripts:**
   - **Evaluation Design and Annotation:**
     - [Sample Annotation Chat](https://chatgpt.com/share/66f6460b-aecc-8011-9f50-33b48ccc38e3)
-  - **Real-world Auditing and Benchmarking:**
-    - [AI Auditing Discussion](https://chatgpt.com/share/your_ai_auditing_chat_link)
-    - [Benchmark Dataset Analysis](https://chatgpt.com/share/your_benchmark_analysis_chat_link)
     
 ---
     
 ## Visuals
     
 - **Gender Bias in Salary Recommendations:**  
-  ![Gender Bias in Salary](https://yourimagehost.com/gender_bias_salary.png)  
+![alt text](https://github.com/khdsisi/AIDMS/blob/main/3.%20Artificial%20intelligence%20Evaluations/female_male_graph%20(1).png)
   *This graph illustrates the distribution of salary range suggestions across male-dominated and female-dominated job roles, highlighting significant disparities.*
-    
-- **Benchmark Dataset Representation:**  
-  ![Benchmark Dataset Diversity](https://yourimagehost.com/benchmark_diversity.png)  
-  *Visualization of the demographic composition of the Labeled Faces in the Wild (LFW) dataset, showing overrepresentation of certain groups.*
     
 ---
     
