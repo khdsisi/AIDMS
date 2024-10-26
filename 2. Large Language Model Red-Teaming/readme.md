@@ -7,7 +7,9 @@ Red-teaming is a term that has its origins in the military and intelligence comm
 This project has 3 parts
 
 **1: Red-teaming for Implicit Bias**
+
 **2: Testing Large Language Models**
+
 **3: Red-teaming for Cross-lingual Discrepancies**
 
 ---
