@@ -1,14 +1,22 @@
-# AI Evaluations: Designing and Assessing Bias in Large Language Models
+# Artificial intelligence Evaluations: Designing and Assessing Bias in Large Language Models
 
 ---
     
 ## Introduction
     
 In the realm of artificial intelligence (AI), evaluations play a crucial role in assessing the performance, fairness, and potential risks associated with AI models and systems. As AI technologies become increasingly integrated into various sectors, from transportation security to human resource management, ensuring their reliability and impartiality is paramount. This project delves into the methodologies for designing AI evaluations, with a specific focus on gender bias in large language models (LLMs). Additionally, it explores real-world AI evaluation mechanisms, highlighting their applications and limitations. Through a combination of custom-designed evaluations and an analysis of established auditing practices, this project aims to contribute to the development of more equitable and accountable AI systems.
-    
+
+This project has 3 parts
+
+**1: Designing My Own Evaluation**
+
+**2: Testing Large Language Models**
+
+**3: Red-teaming for Cross-lingual Discrepancies**
+
 ---
     
-## 1. Designing Your Own Evaluation
+## 1. Designing My Own Evaluation
     
 ### Project Narrative
     
