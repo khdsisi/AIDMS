@@ -9,6 +9,7 @@ This project has 3 parts
 **1: Red-teaming for Implicit Bias**
 **2: Testing Large Language Models**
 **3: Red-teaming for Cross-lingual Discrepancies**
+
 ---
 
 ## 1. Red-Teaming for Implicit Bias
@@ -184,8 +185,6 @@ Overall, the insights gained from this project advocate for the importance of di
   - **Implicit Bias Chats:**
     - [Chat 1: Wall Street Broker vs. Homeless Person](https://chatgpt.com/share/66ee15a9-5a84-8011-a340-ad15dde39688)
     - [Chat 2: Room Selection Among Races](https://chatgpt.com/share/66ee186f-50d0-8011-8192-45db1f0b1699)
-  - **Testing Large Language Models:**
-    - [Bias Explanation Dialogue](https://chatgpt.com/share/your_bias_explanation_chat_link)
   - **Cross-Lingual Discrepancies:**
     - [English Response](https://chatgpt.com/share/66ee4d99-30d8-8011-8700-23bd0692f4f0)
     - [Arabic Response](https://chatgpt.com/share/66ee4e62-63ec-8011-ab7a-1e06913fce16)
