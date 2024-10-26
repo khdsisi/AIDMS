@@ -4,7 +4,7 @@ This repository explores the interplay between values and AI decision-making sys
 
 ## Projects
 
-### 1. Exploratory Data Analysis for Gender Bias in AI
+### 1. Exploratory Data Analysis
 
 This project involves conducting an in-depth evaluation of gender bias within AI systems, specifically focusing on the Gemini model. It provides a structured approach and code templates to facilitate the analysis, allowing for the development of customized evaluations based on identified biases.
 
