@@ -1,7 +1,5 @@
 # <span style="font-size:36px;">Artificial Intelligence, Decision Making, and Society</span>
 
-# Artificial Intelligence, Decision Making, and Society
-
 This repository explores the interplay between values and AI decision-making systems. It emphasizes designing comprehensive evaluations and utilizing exploratory data analysis to develop AI systems with consideration for their downstream impacts. The focus includes participatory AI design, highlighting the importance of equity, transparency, and pluralistic alignment, while addressing challenges related to data collection, representativeness, and bias.
 
 ## Projects
