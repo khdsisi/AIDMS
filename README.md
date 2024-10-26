@@ -68,7 +68,3 @@ This project delves into the privacy and fairness considerations in AI-driven de
 - **Problem 2:** Differential Privacy & Unlearning with Census Data
 - **Problem 3:** Formal Views of Fairness
 - **Problem 4:** Structural Views of Fairness
-
----
-
-Each project is designed to address critical aspects of AI development and deployment, ensuring that AI systems are fair, transparent, and aligned with societal values.
