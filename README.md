@@ -66,5 +66,5 @@ This project delves into the privacy and fairness considerations in AI-driven de
 **Components:**
 - Notions of Data Privacy
 - Differential Privacy & Unlearning with Census Data
-- **Problem 3:** Formal Views of Fairness
-- **Problem 4:** Structural Views of Fairness
+- Formal Views of Fairness
+- Structural Views of Fairness
