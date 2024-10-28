@@ -20,9 +20,9 @@ This project involves conducting an in-depth evaluation of gender bias within AI
 Inspired by military and intelligence practices, this project applies red-teaming techniques to AI systems to identify potential weaknesses and biases. The focus is on testing GPT-4o for implicit biases and cross-lingual discrepancies, ensuring the model's robustness and fairness across different languages and contexts.
 
 **Components:**
-- **Problem 1:** Red-teaming for implicit bias
-- **Problem 2:** Do LLMs say what they think?
-- **Problem 3:** Red-teaming for cross-lingual discrepancies
+- Red-teaming for implicit bias
+- Do LLMs say what they think?
+- Red-teaming for cross-lingual discrepancies
 
 ---
 
@@ -31,8 +31,8 @@ Inspired by military and intelligence practices, this project applies red-teamin
 This project centers on the structured assessment of AI models and systems to evaluate their performance and identify potential risks. It includes designing bespoke evaluation frameworks and analyzing real-world AI evaluations to understand their effectiveness and limitations, ultimately determining the readiness of AI systems for deployment.
 
 **Components:**
-- **Problem 1:** Designing my own evaluation
-- **Problem 2:** Real-world AI evaluations
+- Designing my own evaluation
+- Real-world AI evaluations
 
 ---
 
@@ -41,9 +41,9 @@ This project centers on the structured assessment of AI models and systems to ev
 As AI systems take on more consequential tasks, this project addresses the challenge of balancing conflicting human values and ethical preferences. It explores the pluralistic alignment problem, examining how to design AI systems that accommodate diverse viewpoints and achieve normatively accepted outcomes in society.
 
 **Components:**
-- **Problem 1:** Exploring human ethical preference data
-- **Problem 2:** The “pluralistic alignment” problem
-- **Problem 3:** The challenges of steering LLMs
+- Exploring human ethical preference data
+- The “pluralistic alignment” problem
+- The challenges of steering LLMs
 
 ---
 
@@ -52,10 +52,10 @@ As AI systems take on more consequential tasks, this project addresses the chall
 This project investigates the influence of AI algorithms on online platforms, focusing on how they shape user interactions and content consumption. It covers areas such as recommender systems, content moderation, user engagement, and the spread of misinformation, providing insights into the mechanisms and impacts of AI-driven platform management.
 
 **Components:**
-- **Problem 1:** Recommender Systems
-- **Problem 2:** Content Moderation
-- **Problem 3:** User Engagement
-- **Problem 4:** Misinformation
+- Recommender Systems
+- Content Moderation
+- User Engagement
+- Misinformation
 
 ---
 
@@ -64,7 +64,7 @@ This project investigates the influence of AI algorithms on online platforms, fo
 This project delves into the privacy and fairness considerations in AI-driven decision-making processes across various domains like employment, lending, and healthcare. It explores concepts such as data privacy, differential privacy, fairness definitions, and structural fairness, aiming to develop algorithms that are both private and equitable.
 
 **Components:**
-- **Problem 1:** Notions of Data Privacy
-- **Problem 2:** Differential Privacy & Unlearning with Census Data
+- Notions of Data Privacy
+- Differential Privacy & Unlearning with Census Data
 - **Problem 3:** Formal Views of Fairness
 - **Problem 4:** Structural Views of Fairness
